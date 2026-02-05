@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fce4ec; /* Soft pink background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #yesBtn {
+            background-color: #e91e63;
+            color: white;
+        }
+        #noBtn {
+            background-color: #eeeeee;
+            color: #757575;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXNqZzR3bmZqZzR3bmZqZzR3bmZqZzR3bmZqZzR3bmZqJnB0X2luc2lkZWRfcmVwbHlfYnlfaWQmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Cat">
+        
+        <h1 id="question">Minu, will you be my valentine?</h1>
+
+        <div class="btn-container">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+
+        let yesSize = 1.1;
+
+        // When "No" is hovered, it moves away and "Yes" grows
+        noBtn.addEventListener('mouseover', () => {
+            // Random position for No button
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // Make Yes button bigger
+            yesSize += 0.2;
+            yesBtn.style.transform = `scale(${yesSize})`;
+        });
+
+        // When "Yes" is clicked
+        yesBtn.addEventListener('click', () => {
+            question.innerHTML = "Minu! I Miss you So much! ❤️";
+            document.querySelector('.btn-container').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
